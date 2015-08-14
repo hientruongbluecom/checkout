@@ -14,14 +14,36 @@ class Bc_OneCheckout_IndexController extends Mage_Checkout_Controller_Action
         return Mage::getSingleton('checkout/cart');
     }
 
+    /**
+     * Predispatch: should set layout area
+     *
+     * @return Mage_Checkout_OnepageController
+     */
+    public function preDispatch()
+    {
+        parent::preDispatch();
+        $this->_preDispatchValidateCustomer();
 
+        $checkoutSessionQuote = Mage::getSingleton('checkout/session')->getQuote();
+        if ($checkoutSessionQuote->getIsMultiShipping()) {
+            $checkoutSessionQuote->setIsMultiShipping(false);
+            $checkoutSessionQuote->removeAllAddresses();
+        }
+
+        if (!$this->_canShowForUnregisteredUsers()) {
+            $this->norouteAction();
+            $this->setFlag('',self::FLAG_NO_DISPATCH,true);
+            return;
+        }
+
+        return $this;
+    }
 
     /**
      * Checkout page
      */
     public function indexAction()
     {
-        die('2');
         if (!Mage::helper('checkout')->canOnepageCheckout()) {
             Mage::getSingleton('checkout/session')->addError($this->__('The onepage checkout is disabled.'));
             $this->_redirect('checkout/cart');

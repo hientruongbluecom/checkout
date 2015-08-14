@@ -78,6 +78,7 @@
         <onecheckout>
             <general>
                 <enabled>1</enabled>
+                <pagetitle>One Step Checkout</pagetitle>
             </general>
         </onecheckout>
     </default>

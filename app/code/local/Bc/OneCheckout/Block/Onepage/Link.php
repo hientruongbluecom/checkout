@@ -1,4 +1,4 @@
-<?php die('link');
+<?php
 class Bc_OneCheckout_Block_Onepage_Link extends Mage_Core_Block_Template
 {
     public function getCheckoutUrl(){

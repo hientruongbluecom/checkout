@@ -1,4 +1,4 @@
-<?php die('toiurrl');
+<?php
 class Bc_OneCheckout_Helper_Url extends Mage_Checkout_Helper_Url
 {
     /**

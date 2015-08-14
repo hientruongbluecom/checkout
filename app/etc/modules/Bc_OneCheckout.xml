@@ -3,9 +3,6 @@
         <Bc_OneCheckout>
             <active>true</active>
             <codePool>local</codePool>
-           <!--  <depend>
-                <Mage_Checkout />
-            </depend> -->
         </Bc_OneCheckout>
     </modules>
 </config>
