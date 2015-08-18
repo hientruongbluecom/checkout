@@ -14,15 +14,37 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>bluecom/js/checkout.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>bluecom/js/extend.js</name></action>
+            <action method="addJs"><file>mage/directpost.js</file></action>
+            <action method="addJs"><script>mage/centinel.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/opcheckout.js</name></action>
+           <!-- <action method="addItem"><type>skin_js</type><name>bluecom/head/head.min.js</name></action>
             <action method="addCss"><stylesheet>bluecom/css/onestepcheckout.css</stylesheet></action>
             <action method="addCss"><stylesheet>bluecom/css/gumby_grid.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>bluecom/jquery/jquery.min.js</name></action>
+            <block type="core/text" name="google.cdn.jquery" >
+                <action method="setText">
+                    <text><![CDATA[<script type="text/javascript">jQuery.noConflict();</script>]]>
+                    </text>
+                </action>
+            </block>
+            <action method="addItem" ><type>skin_js</type><name>bluecom/jquery/jquery-ui.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>bluecom/jquery/jquery.tmpl.min.js</name></action>-->
         </reference>
         <reference name="content">
             <block type="onecheckout/onepage" name="checkout.onepage.container" template="bluecom/onepage.phtml">
                 <block type="onecheckout/onepage_login" name="checkout.onepage.login" as="login" template="bluecom/onepage/login.phtml"/>
-                <block type="onecheckout/onepage_billing" name="checkout.onepage.billing" as="billing" template="lotusbreath/onestepcheckout/onepage/billing.phtml"/>
+                <block type="onecheckout/onepage_billing" name="checkout.onepage.billing" as="billing" template="bluecom/onepage/billing.phtml"/>
+                <block type="onecheckout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="bluecom/onepage/shipping.phtml"/>
+                <block type="onecheckout/onepage_comment" name="checkout.order.comment" as="customer.comment"/>
+                <block type="onecheckout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="bluecom/onepage/shipping_method.phtml">
+                    <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
+                    <block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
+                </block>
 
             </block>
         </reference>
+
     </onecheckout_index_index>
 </layout>
